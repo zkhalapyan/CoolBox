@@ -1,0 +1,33 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <style>
+            @import url("css/CoolBox.css");
+        </style>
+
+        <script src="js/CoolBox.js"></script>
+    </head>
+    <body>
+
+        <script>
+            var coolbox = new CoolBox({width: "400", height: "250"});
+
+            coolbox.addButton('Continue', function(){
+                alert('hi');
+            });
+
+            coolbox.addButton('Cancel', function(){
+                coolbox.hide();
+            }, true);
+
+            coolbox.setTitle('Your Daily Horoscope');
+
+            coolbox.show();
+        </script>
+
+
+
+    </body>
+</html>
