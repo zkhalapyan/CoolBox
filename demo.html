@@ -7,12 +7,16 @@
             @import url("css/CoolBox.css");
         </style>
 
-        <script src="js/CoolBox.js"></script>
+        <script src="js/CoolBox.js?v=1"></script>
     </head>
     <body>
 
         <script>
             var coolbox = new CoolBox({width: "400", height: "250"});
+
+            var content = document.createElement('div');
+            content.innerHTML = '<h1>hello world</h1>';
+            coolbox.addContent(content);
 
             coolbox.addButton('Continue', function(){
                 alert('hi');
@@ -25,6 +29,13 @@
             coolbox.setTitle('Your Daily Horoscope');
 
             coolbox.show();
+            
+            coolbox.loading(true);
+            
+            setTimeout(function(){
+                coolbox.loading(false);
+            }, 1000);
+            
         </script>
 
 

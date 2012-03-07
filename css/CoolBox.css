@@ -60,7 +60,9 @@ div.cool-box.box
     z-index: 1000;
     background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mMICAjYCAADhgGiBObB6AAAAABJRU5ErkJggg%3D%3D);
     border-radius: 8px;
+
     padding: 10px;
+    padding-right: 12px;
 
     min-height: 50px;
     min-width: 100px;
@@ -72,15 +74,20 @@ div.cool-box.box
 
 div.cool-box.body
 {
-
+    padding-bottom: 38px;
     min-height: 40px;
     height: auto;
+    padding: 10px;
 }
 
 button.cool-box.button
 {
 
-    margin: 6px 10px;
+
+    margin-right: 10px;
+    margin-top: 6px;
+    margin-bottom: 6px;
+
     background-color: #5B74A8;
     background-position: 0 -294px;
     background-repeat: no-repeat;
@@ -103,10 +110,20 @@ button.cool-box.button
 
 button.cool-box.button.grey
 {
-    background-color: #5B74A8;
+
+    background-color: #EEE;
     color: #444;
     background-position: 0 -250px;
     border-color: #999;
+    
+}
 
+div.cool-box.loader {
 
+    background-image: url('../img/loader.gif');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 80px 60px;
+    height: 70%;
+    
 }

@@ -1,5 +1,10 @@
 var CoolBox = function(options)
 {
+    //Preload the loading image.
+    var fbLoaderGif = new Image();
+    fbLoaderGif.src = "img/fbloader.gif";
+   
+    
     options = options || {};
 
     options.width = options.width || 400;
@@ -25,21 +30,49 @@ var CoolBox = function(options)
     title.className = 'cool-box title';
     titleBar.appendChild(title);
 
+    //Create the loading image container. This will span accross the body of the 
+    //box but will be initially hidden.
+    var loader = document.createElement('div');
+    loader.className = 'cool-box body loader';
+    loader.style.display = 'none';
+    content.appendChild(loader);
+    
+    //The body is where the actual content i.e. headers and images are placed.
+    //The body does not contain either the top title or the bottom control 
+    //buttons. 
     var body = document.createElement('div');
     body.className = 'cool-box body';
     content.appendChild(body);
 
+    //The controls represent the bottom bar for containg bottoms.
     var controls = document.createElement('div');
     controls.className = 'cool-box controls';
     controls.style.display = 'none';
     content.appendChild(controls);
 
+    
+    
 
+    /**
+     * Cross-browser compatible method for retreiving window width.
+     */
     var getWindowWidth = function()
     {
         return window.innerWidth || document.body.clientWidth;
     }
     
+    /**
+     * Cross-browser compatible method for retreiving window height.
+     */
+    var getWindowHeight = function()
+    {
+        return window.innerHeight || document.body.clientHeight;
+    }
+
+    /**
+     * Sets the title on the top bar. If the specified text is null or undefined
+     * then the method will not have any effect.
+     */
     this.setTitle = function(text)
     {
         if(text){
@@ -71,23 +104,29 @@ var CoolBox = function(options)
         }
 
     };
+    
+    this.loading = function(isLoading){
+        loader.style.display = (isLoading) ? 'block' : 'none';
+        body.style.display = (isLoading) ? 'none' : 'block';
+    }
 
-    this.show = function()
-    {
+    
+    this.show = function(){
 
+        //Update the box's width and height according to the set options.
         box.style.width = options.width + "px";
         box.style.height = options.height + "px";
 
-
-        box.style.top = "100px";
+        //Horizontally center the box on the visible screen.
         box.style.left = (getWindowWidth() / 2 - options.width / 2) + "px";
+        box.style.top = (getWindowHeight() / 2 - options.height / 3 * 2) + "px";
 
+        //Display the block.
         box.style.display = 'block';
+    }
 
-
-
-
-
+    this.addContent = function(content){
+        body.appendChild(content);
     }
 
     this.hide = function()
