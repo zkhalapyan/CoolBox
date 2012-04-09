@@ -1,10 +1,5 @@
-var CoolBox = function(options)
-{
-    //Preload the loading image.
-    var fbLoaderGif = new Image();
-    fbLoaderGif.src = "img/fbloader.gif";
-   
-    
+var CoolBox = function(options){
+
     options = options || {};
 
     options.width = options.width || 400;
@@ -30,16 +25,16 @@ var CoolBox = function(options)
     title.className = 'cool-box title';
     titleBar.appendChild(title);
 
-    //Create the loading image container. This will span accross the body of the 
+    //Create the loading image container. This will span accross the body of the
     //box but will be initially hidden.
     var loader = document.createElement('div');
     loader.className = 'cool-box body loader';
     loader.style.display = 'none';
     content.appendChild(loader);
-    
+
     //The body is where the actual content i.e. headers and images are placed.
-    //The body does not contain either the top title or the bottom control 
-    //buttons. 
+    //The body does not contain either the top title or the bottom control
+    //buttons.
     var body = document.createElement('div');
     body.className = 'cool-box body';
     content.appendChild(body);
@@ -50,8 +45,6 @@ var CoolBox = function(options)
     controls.style.display = 'none';
     content.appendChild(controls);
 
-    
-    
 
     /**
      * Cross-browser compatible method for retreiving window width.
@@ -60,7 +53,7 @@ var CoolBox = function(options)
     {
         return window.innerWidth || document.body.clientWidth;
     }
-    
+
     /**
      * Cross-browser compatible method for retreiving window height.
      */
@@ -101,16 +94,21 @@ var CoolBox = function(options)
             controls.appendChild(button);
 
             controls.style.display = 'block';
+
+            return button;
         }
 
+
+        return null;
+
     };
-    
+
     this.loading = function(isLoading){
         loader.style.display = (isLoading) ? 'block' : 'none';
         body.style.display = (isLoading) ? 'none' : 'block';
     }
 
-    
+
     this.show = function(){
 
         //Update the box's width and height according to the set options.
@@ -137,5 +135,42 @@ var CoolBox = function(options)
 
     this.hide();
     document.body.appendChild(box);
+
+}
+
+
+
+CoolBox.StandardContent = function(headline, message, imageSrc, highlight){
+
+    var content = document.createElement('div');
+
+    if(headline){
+        var header = document.createElement('h1');
+        header.className = 'cool-box standard-header';
+        header.innerHTML = headline;
+        content.appendChild(header);
+    }
+
+    if(imageSrc){
+        var img = document.createElement('img');
+        img.className = 'cool-box standard-image';
+        img.src = imageSrc;
+        content.appendChild(img);
+    }
+
+    if(message){
+        var paragraph = document.createElement('p');
+        paragraph.innerHTML = message;
+        content.appendChild(paragraph);
+    }
+
+    if(highlight){
+        var bold = document.createElement('p');
+        bold.className = 'cool-box standard-highlight';
+        bold.innerHTML = highlight;
+        content.appendChild(bold);
+    }
+
+    return content;
 
 }

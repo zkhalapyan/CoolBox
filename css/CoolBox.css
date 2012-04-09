@@ -115,7 +115,7 @@ button.cool-box.button.grey
     color: #444;
     background-position: 0 -250px;
     border-color: #999;
-    
+
 }
 
 div.cool-box.loader {
@@ -125,5 +125,26 @@ div.cool-box.loader {
     background-repeat: no-repeat;
     background-size: 80px 60px;
     height: 70%;
-    
+}
+
+
+
+/* * * * * * * * * * * * * *
+ * Standard Content Styles *
+ * * * * * * * * * * * * * */
+
+h1.cool-box.standard-header {
+    border-bottom:1px solid #CCC;
+    text-align: center;
+    margin-bottom: 15px;
+    padding-bottom: 3px;
+}
+
+img.cool-box.standard-image {
+    float:right;
+}
+
+p.cool-box.standard-highlight {
+    font-weight: bold;
+    text-align: left;
 }
